@@ -1,0 +1,182 @@
+/* 🎨 Variables globales de color permite refactorizar los colores de toda la pagina de forma facil*/
+:root {
+    --color-principal: #1a1a2e;
+    --color-secundario: #e94560;
+    --color-fondo: #f4f4f4;
+    --color-texto: #222;
+}
+
+/* Estilo de texto general del cuerpo de la página */
+body {
+    font-family: 'Roboto', sans-serif; /* Roboto me gusta en lo personal*/
+    background-color: var(--color-fondo);
+    margin: 0;
+    padding: 0;
+}
+
+/* Encabezado principal */
+header {
+    background-color: var(--color-principal);
+    color: white;
+    padding: 1em;
+    text-align: center;
+}
+
+/* Estilos del menú de navegación */
+nav ul {
+    list-style: none; /* Elimina viñetas */
+    display: flex; /* Flex lo mas sencillo y practico */
+    justify-content: center;
+    padding: 0;
+}
+
+/* Espaciado entre elementos del menú */
+nav ul li {
+    margin: 0 1em; /* Espaciado horizontal */
+    font-size: 1.2em; /* Tamaño de fuente */
+}
+
+/* Enlaces del menú */
+nav a { 
+    color: white;
+    text-decoration: none; /* Sin subrayado */
+    font-weight: bold;
+    transition: color 0.3s ease-in-out; /* Transición suave al cambiar color */
+}
+
+/* Efecto hover en enlaces del menú */
+nav a:hover { /* Cambia el color al pasar el ratón */
+    color: var(--color-secundario);
+}
+
+/* Contenedores de categorías y juegos: rejilla flexible */
+.categorias, .juegos {
+    display: grid; /* Rejilla para organizar elementos */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas flexibles */
+    gap: 1em;
+    padding: 2em;
+}
+
+/* Estilo de caja para categorías y juegos individuales */
+.categorias article, .juego-box {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease; /* Transición suave al escalar */
+    animation: fadeIn 1s ease-in; /* Animación de entrada */
+}
+
+/* Efecto hover: escala y rebote */
+.categorias article:hover, .juego-box:hover {
+    transform: scale(1.05);
+    animation: bounce 0.5s;
+}
+
+/* 📏 Tamaño uniforme para las imágenes de los juegos en las páginas de categoría */
+.juego-box img {
+    width: 100%;              /* Ocupa todo el ancho del contenedor */
+    height: 200px;            /* Altura fija para que todas tengan el mismo alto */
+    object-fit: cover;        /* Recorta o ajusta la imagen para llenar el espacio sin deformarse */
+    border-bottom: 1px solid #ccc; /* Línea separadora decorativa opcional */
+}
+
+
+/* Precio destacado en color */
+.precio {
+    font-weight: bold;
+    color: var(--color-secundario);
+}
+
+/* Animación de aparición suave */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* Animación tipo rebote */
+@keyframes bounce {
+    0%, 100% {transform: translateY(0);}
+    50% {transform: translateY(-10px);}
+}
+
+/* Media query para pantallas pequeñas (≤ 600px) */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.5em; /* Tamaño de fuente más pequeño */
+    }
+
+    nav ul {
+        flex-direction: column; /* Menú vertical en móviles */
+    }
+
+    .categorias, .juegos {
+        grid-template-columns: 1fr; /* Una columna en móviles */
+    }
+}
+
+/* Sección individual de categoría en la página principal */
+.categoria-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 2em;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    animation: fadeIn 1s ease-in;
+}
+
+/* Imagen de portada de categoría */
+.categoria-section img {
+    flex: 1 1 300px;
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+}
+
+/* Contenedor de texto en la sección de categoría */
+.categoria-section div {
+    flex: 1 1 300px;
+    padding: 2em;
+}
+
+/* Título de la categoría */
+.categoria-section h2 {
+    color: var(--color-principal);
+    margin-top: 0;
+}
+
+/* Botón de acción */
+.btn {
+    display: inline-block;
+    margin-top: 1em;
+    padding: 0.7em 1.5em;
+    background-color: var(--color-secundario);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto hover del botón */
+.btn:hover {
+    background-color: #d4324a;
+}
+
+/* Media query para pantallas ≤ 768px (categorías en columna) */
+@media (max-width: 768px) {
+    .categoria-section {
+        flex-direction: column;
+    }
+}
+
+/* Forzar tamaño uniforme en las imágenes de portada de categoría */
+.categoria-section img {
+    width: 100%;
+    max-width: 400px;
+    height: 250px;
+    object-fit: cover;
+}
